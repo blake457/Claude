@@ -134,7 +134,10 @@ function doPost(e) {
     var pdfSizeBytes = pdfBlob.getBytes().length;
     var pdfSizeMB = pdfSizeBytes / (1024 * 1024);
     
-    if (pdfSizeMB > 24) {
+    if (pdfSizeMB > 18) {
+      // Gmail's hard limit is 25 MB on the ENCODED message; base64 inflates the
+      // attachment ~37%, so a raw PDF over ~18 MB can be rejected. Fall back to a
+      // Drive link BEFORE that happens so the PM always receives the report.
       // PDF too large for email attachment — send link to Drive file instead
       var emailBody = body + '\n\n' +
         '⚠ The PDF report (' + pdfSizeMB.toFixed(1) + ' MB) was too large to attach to this email.\n' +

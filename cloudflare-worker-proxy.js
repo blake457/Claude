@@ -66,12 +66,16 @@ export default {
           const parsed = JSON.parse(responseText);
           responseBody = JSON.stringify(parsed);
         } catch (e) {
-          // Not JSON — wrap it as success if status is OK
-          if (gasResponse.ok) {
-            responseBody = JSON.stringify({ success: true, raw: responseText.slice(0, 200) });
-          } else {
-            responseBody = JSON.stringify({ success: false, error: 'GAS returned non-JSON: ' + responseText.slice(0, 200) });
-          }
+          // The Apps Script ALWAYS returns JSON on a real run (see doPost/doGet).
+          // A non-JSON body means the request never reached our code — Google
+          // served an HTML error / sign-in / "exceeded execution time" page, and
+          // those come back with HTTP 200. Reporting that as success silently
+          // drops the email, so we ALWAYS surface it as a failure regardless of
+          // status, and let the app fall back to manual Gmail.
+          responseBody = JSON.stringify({
+            success: false,
+            error: 'GAS did not return JSON (HTTP ' + gasResponse.status + ') — report not sent: ' + responseText.slice(0, 200)
+          });
         }
 
         return new Response(responseBody, {

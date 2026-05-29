@@ -1,7 +1,7 @@
 // ============================================================
 // Catalyst Building Walk — Service Worker
 // ============================================================
-const CACHE_NAME = 'catalyst-walk-v4';
+const CACHE_NAME = 'catalyst-walk-v5';
 const ASSETS = [
   './',
   './index.html',

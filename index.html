@@ -1720,7 +1720,35 @@ function updateProgress() {
 function showDialog() { document.getElementById('dialogOverlay').style.display = 'block'; }
 function hideDialog() { document.getElementById('dialogOverlay').style.display = 'none'; }
 
-function generatePDF() {
+// Re-encode a stored photo down to roughly page resolution for the PDF ONLY.
+// The full-res original (1600px) stays on the device for on-screen review; this
+// shrinks just the embedded copy so big walks (e.g. Aspen, 56+ photos) still
+// produce an emailable PDF. ~1200px @ q0.7 is ~170 DPI across the 7" content
+// column — sharp on screen and in normal print. Never rejects: on any failure
+// it resolves with the original bytes so the PDF always builds.
+function downsampleForPdf(dataUrl) {
+  return new Promise((resolve) => {
+    const PDF_MAX = 1200, PDF_Q = 0.7;
+    const img = new Image();
+    img.onload = () => {
+      try {
+        let w = img.width, h = img.height;
+        if (w > PDF_MAX || h > PDF_MAX) {
+          if (w > h) { h = Math.round(h * PDF_MAX / w); w = PDF_MAX; }
+          else { w = Math.round(w * PDF_MAX / h); h = PDF_MAX; }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        resolve(canvas.toDataURL('image/jpeg', PDF_Q));
+      } catch (e) { resolve(dataUrl); }
+    };
+    img.onerror = () => resolve(dataUrl);
+    img.src = dataUrl;
+  });
+}
+
+async function generatePDF() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF('p','mm','letter');
   const pageW = 215.9, pageH = 279.4, margin = 18;
@@ -1857,7 +1885,8 @@ function generatePDF() {
       doc.setFont('helvetica','bold'); doc.setFontSize(9); doc.setTextColor(80,80,80);
       doc.text(photo.section + '  ›  ' + photo.area, margin, y); y += 5;
       try {
-        doc.addImage(photo.data, 'JPEG', margin, y, imgW, imgH);
+        const embedData = await downsampleForPdf(photo.data);
+        doc.addImage(embedData, 'JPEG', margin, y, imgW, imgH);
         y += imgH + 8;
       } catch(e) { doc.text('[Photo could not be rendered]', margin, y); y += 8; }
     }
@@ -1880,7 +1909,7 @@ function generatePDF() {
 // CLOUDFLARE WORKER PROXY (routes to Google Apps Script)
 const SCRIPT_URL = 'https://walk-proxy.blake-724.workers.dev';
 
-function dialogAutoEmail() {
+async function dialogAutoEmail() {
   if (!SCRIPT_URL) {
     const status = document.getElementById('sendStatus');
     status.style.display = 'block';
@@ -1900,7 +1929,7 @@ function dialogAutoEmail() {
   status.textContent = 'Generating PDF and sending to ' + BUILDING.email + '...';
 
   try {
-    const doc = generatePDF();
+    const doc = await generatePDF();
     const pdfBase64 = doc.output('datauristring').split(',')[1];
 
     const payload = {
@@ -1937,11 +1966,16 @@ function dialogAutoEmail() {
     .then(text => {
       let result;
       try { result = JSON.parse(text); } catch(e) {
-        // If response isn't JSON but status was OK, treat as success
-        result = { success: true, message: 'Response received (non-JSON)' };
+        // A non-JSON body means the report never reached the email backend
+        // (Google served an HTML error/login/timeout page — these come back as
+        // HTTP 200). Treating that as "sent" silently loses the email, so we
+        // fail honestly and let the manual-Gmail fallback below take over.
+        throw new Error('Server did not confirm the send (unexpected response). The report was NOT emailed.');
       }
-      if (result.success === false) {
-        throw new Error(result.error || 'Script reported failure');
+      // Only a genuine backend confirmation counts. Anything else — missing flag,
+      // {success:false}, a proxy-wrapped error — is a failure, not a silent pass.
+      if (result.success !== true) {
+        throw new Error(result.error || result.emailStatus || 'The email backend did not confirm delivery');
       }
       status.className = 'send-status-success';
       // Be honest about HOW it was delivered. The GAS backend sends a Drive
@@ -2005,8 +2039,8 @@ function goHome() {
   updateStartBtn();
 }
 
-function dialogSave() {
-  const doc = generatePDF();
+async function dialogSave() {
+  const doc = await generatePDF();
   doc.save(BUILDING.filename + '_' + state.date + '.pdf');
   hideDialog();
   commitDeficiencies();
@@ -2018,8 +2052,8 @@ function dialogSave() {
   }, 500);
 }
 
-function dialogEmail() {
-  const doc = generatePDF();
+async function dialogEmail() {
+  const doc = await generatePDF();
   doc.save(BUILDING.filename + '_' + state.date + '.pdf');
   const to = BUILDING.email;
   const subject = encodeURIComponent('Building Walk — ' + BUILDING.name + ' — ' + state.date);
