@@ -310,7 +310,6 @@ const BUILDINGS = {
       { key:'door_rear', label:'Rear / Side Entrance', hint:'Lock, closer, fob reader, condition' },
       { key:'door_parkade_ped', label:'Parkade Pedestrian Door(s)', hint:'Lock, closer, fob access, signage' },
       { key:'door_rooftop', label:'Rooftop / Mechanical Access Door', hint:'Lock, signage, condition' },
-      { key:'door_stairwell', label:'Stairwell Fire Doors', hint:'Self-closing, latching, seals, fire door signage present' },
     ]},
   { id:'parkade', name:'Parkade & Gates', theme:'parkade', sub:'P1 visitor, P2 resident — condition, gates, lighting, signage',
     items:[
@@ -334,7 +333,6 @@ const BUILDINGS = {
     ]},
   { id:'exterior', name:'Building Exterior & Grounds', theme:'exterior', sub:'Facades, grounds, garbage enclosure, lighting, signage',
     items:[
-      { key:'ext_front', label:'Front Entrance & Facade', hint:'Graffiti, litter, vandalism, cracks, window condition' },
       { key:'ext_rear', label:'Rear / Side Exterior', hint:'Graffiti, litter, vandalism, fencing, drainage' },
       { key:'ext_landscape', label:'Landscaping & Grounds', hint:'Lawn, hedges, planters, irrigation, debris, trip hazards' },
       { key:'ext_garbage_enc', label:'Garbage / Recycling Enclosure', hint:'Bins, enclosure condition, odour, overflow, pests' },
@@ -351,7 +349,7 @@ const BUILDINGS = {
     items:[
       { key:'maint_elec', label:'Electrical Room', hint:'Panel access, labelling, cleanliness, obstructions, temperature' },
       { key:'maint_mech', label:'Mechanical Room', hint:'HVAC, pumps, leaks, temperature, unusual noise' },
-      { key:'maint_fire', label:'Sprinkler / Fire Panel Room', hint:'Panel status, sprinkler heads, signage, access' },
+      { key:'maint_fire', label:'Sprinkler / Fire Panel Room', hint:'Sprinkler heads, signage, access' },
       { key:'maint_boiler', label:'Boiler / Hot Water', hint:'Temperature, leaks, pressure gauges, unusual noise' },
       { key:'maint_gen', label:'Generator', hint:'Fuel level, run status, maintenance log, leaks, ventilation' },
       { key:'maint_garbage', label:'Garbage Room', hint:'Cleanliness, bins, odour, overflow, pest signs, chute' },
@@ -405,7 +403,6 @@ const BUILDINGS = {
       { key:'door_rear', label:'Rear / Side Entrance', hint:'Lock, closer, fob reader, condition' },
       { key:'door_parkade_ped', label:'Parkade Pedestrian Door(s)', hint:'Lock, closer, fob access, signage' },
       { key:'door_rooftop', label:'Rooftop / Mechanical Access Door', hint:'Lock, signage, condition' },
-      { key:'door_stairwell', label:'Stairwell Fire Doors', hint:'Self-closing, latching, seals, fire door signage present' },
     ]},
   { id:'parkade', name:'Parkade & Gates', theme:'parkade', sub:'P1 visitor & tenant parking, gates, lighting',
     items:[
@@ -428,7 +425,6 @@ const BUILDINGS = {
     ]},
   { id:'exterior', name:'Building Exterior & Grounds', theme:'exterior', sub:'Facades, grounds, lighting, signage, generator, loading zone',
     items:[
-      { key:'ext_front', label:'Front Entrance & Facade', hint:'Graffiti, litter, vandalism, cracks, window condition' },
       { key:'ext_rear', label:'Rear / Side Exterior', hint:'Graffiti, litter, vandalism, fencing, drainage' },
       { key:'ext_landscape', label:'Landscaping & Grounds', hint:'Lawn, hedges, planters, irrigation, debris, trip hazards' },
 
@@ -447,11 +443,13 @@ const BUILDINGS = {
       { key:'amen_bbq', label:'BBQ (5th Floor Patio)', hint:'Condition, cleanliness, gas connection, covers' },
       { key:'amen_dogwash', label:'Dog Wash Room', hint:'Fixtures, drainage, cleanliness, supplies, plumbing' },
     ]},
-  { id:'maintenance', name:'Maintenance, Mechanical & Electrical', theme:'maintenance', sub:'Electrical room, garbage room, generator room',
+  { id:'maintenance', name:'Maintenance, Mechanical & Electrical', theme:'maintenance', sub:'Electrical room, garbage room, generator room, elevator room temperatures',
     items:[
       { key:'maint_elec', label:'Electrical Room', hint:'Panel access, labelling, cleanliness, obstructions, temperature' },
       { key:'maint_garbage', label:'Garbage Room', hint:'Cleanliness, bins, odour, overflow, pest signs, chute' },
       { key:'maint_generator', label:'Generator Room', hint:'Fuel level, run status, maintenance log, leaks, ventilation' },
+      { key:'maint_elev_east', label:'Elevator Room — East (Temperature)', hint:'Photograph the thermometer showing the room temperature reading' },
+      { key:'maint_elev_west', label:'Elevator Room — West (Temperature)', hint:'Photograph the thermometer showing the room temperature reading' },
     ]},
 
   { id:'fire_safety', name:'Daily Fire Safety Inspection', theme:'fire', sub:'Common areas, egress, fire alarm, sprinklers, access',
@@ -510,7 +508,6 @@ const BUILDINGS = {
   { id:'doors', name:'Doors & Entry Points', theme:'doors', sub:'Locks, fob readers, door closer, glass, weatherstripping',
     items:[
       { key:'door_main', label:'Main Entrance Door', hint:'Lock, fob reader, closer, glass, weatherstripping' },
-      { key:'door_stairway', label:'Stairway Fire Doors', hint:'Self-closing, latching, seals, fire door signage present' },
       { key:'door_electrical', label:'Electrical Closets', hint:'Locks, closer, condition, signage' },
       { key:'door_amenity', label:'Amenity Room Door', hint:'Lock, fob reader, closer, condition' },
     ]},
@@ -538,7 +535,6 @@ const BUILDINGS = {
     ]},
   { id:'exterior', name:'Building Exterior & Grounds', theme:'exterior', sub:'Grounds, cleanliness, litter, graffiti, facades',
     items:[
-      { key:'ext_front', label:'Front Entrance & Facade', hint:'Graffiti, litter, vandalism, cracks, window condition' },
       { key:'ext_rear', label:'Side & Rear Exterior', hint:'Graffiti, litter, vandalism, fencing, drainage' },
       { key:'ext_landscape', label:'Landscaping & Grounds', hint:'Lawn, hedges, planters, irrigation, debris, trip hazards' },
       { key:'ext_dog', label:'Dog Stations', hint:'Bag supply, bin condition, cleanliness, signage' },
@@ -606,35 +602,32 @@ const BUILDINGS = {
       { key:'door_comm_loading', label:'Exit Door — Commercial Loading Bay', hint:'Lock, closer, fob access, condition' },
       { key:'door_ms_parking', label:'Main Street Parking Entrance', hint:'Lock, fob reader, closer, signage' },
       { key:'door_rooftop', label:'Rooftop / Mechanical Access Door', hint:'Lock, signage, condition' },
-      { key:'door_stairwell', label:'Stairwell Fire Doors', hint:'Self-closing, latching, seals, fire door signage present' },
     ]},
   { id:'parkade', name:'Parkade & Gates', theme:'parkade', sub:'Main & residential gates, P1–P4',
     items:[
-      { key:'pk_main_gate', label:'Main Gate', hint:'Operation, damage, sensor, remote/fob access' },
       { key:'pk_res_gate', label:'Residential Gate', hint:'Operation, damage, sensor, fob access' },
       { key:'pk_p1', label:'P1 Parking', hint:'Cleanliness, oil stains, line markings, lighting, general condition' },
       { key:'pk_p2', label:'P2 Parking', hint:'Cleanliness, oil stains, line markings, lighting, general condition' },
       { key:'pk_p3', label:'P3 Parking', hint:'Cleanliness, oil stains, line markings, lighting, general condition' },
       { key:'pk_p4', label:'P4 Parking', hint:'Cleanliness, oil stains, line markings, lighting, general condition' },
     ]},
-  { id:'storage', name:'Storage Rooms', theme:'storage', sub:'Rooms 201, 202, 301, 302',
+  { id:'storage', name:'Storage Rooms', theme:'storage', sub:'Rooms 201, 202, 301, 302, Building Storage',
     items:[
       { key:'stor_201', label:'Room 201', hint:'Lock, cleanliness, lighting, obstructions, pest signs' },
       { key:'stor_202', label:'Room 202', hint:'Lock, cleanliness, lighting, obstructions, pest signs' },
       { key:'stor_301', label:'Room 301', hint:'Lock, cleanliness, lighting, obstructions, pest signs' },
       { key:'stor_302', label:'Room 302', hint:'Lock, cleanliness, lighting, obstructions, pest signs' },
+      { key:'stor_building', label:'Storage Room (Building)', hint:'Lock, cleanliness, lighting, obstructions, pest signs' },
     ]},
-  { id:'bike', name:'Bike Rooms', theme:'bike', sub:'Rooms 1–5',
+  { id:'bike', name:'Bike Rooms', theme:'bike', sub:'Rooms 1–4',
     items:[
       { key:'bike_1', label:'Bike Room 1', hint:'Lock, fob access, racks, capacity, cleanliness' },
       { key:'bike_2', label:'Bike Room 2', hint:'Lock, fob access, racks, capacity, cleanliness' },
       { key:'bike_3', label:'Bike Room 3', hint:'Lock, fob access, racks, capacity, cleanliness' },
       { key:'bike_4', label:'Bike Room 4', hint:'Lock, fob access, racks, capacity, cleanliness' },
-      { key:'bike_5', label:'Bike Room 5', hint:'Lock, fob access, racks, capacity, cleanliness' },
     ]},
   { id:'exterior', name:'Building Exterior & Grounds', theme:'exterior', sub:'Facades, grounds, lighting, signage',
     items:[
-      { key:'ext_front', label:'Front Entrance & Facade', hint:'Graffiti, litter, vandalism, cracks, window condition' },
       { key:'ext_rear', label:'Rear / Side Exterior', hint:'Graffiti, litter, vandalism, fencing, drainage' },
       { key:'ext_landscape', label:'Landscaping & Grounds', hint:'Lawn, hedges, planters, irrigation, debris, trip hazards' },
       { key:'ext_garbage_enc', label:'Garbage / Recycling Enclosure', hint:'Bins, enclosure condition, odour, overflow, pests' },
@@ -656,7 +649,7 @@ const BUILDINGS = {
     items:[
       { key:'maint_elec', label:'Electrical Room', hint:'Panel access, labelling, cleanliness, obstructions, temperature' },
       { key:'maint_mech', label:'Mechanical Room', hint:'HVAC, pumps, leaks, temperature, unusual noise' },
-      { key:'maint_fire', label:'Sprinkler / Fire Panel Room', hint:'Panel status, sprinkler heads, signage, access' },
+      { key:'maint_fire', label:'Sprinkler / Fire Panel Room', hint:'Sprinkler heads, signage, access' },
       { key:'maint_boiler', label:'Boiler / Hot Water', hint:'Temperature, leaks, pressure gauges, unusual noise' },
       { key:'maint_garbage', label:'Garbage Room', hint:'Cleanliness, bins, odour, overflow, pest signs, chute' },
     ]},
@@ -703,7 +696,6 @@ const BUILDINGS = {
     items:[
       { key:'door_main', label:'Main Entrance Door', hint:'Lock, fob reader, closer, glass, weatherstripping' },
       { key:'door_rear', label:'Rear / Side Entrance', hint:'Lock, closer, fob reader, condition' },
-      { key:'door_stairwell', label:'Stairwell Fire Doors', hint:'Self-closing, latching, seals, fire door signage present' },
     ]},
   { id:'parkade', name:'Parkade & Gates', theme:'parkade', sub:'Resident parking gate, P1',
     items:[
@@ -717,7 +709,6 @@ const BUILDINGS = {
     ]},
   { id:'exterior', name:'Building Exterior & Grounds', theme:'exterior', sub:'Facades, grounds, lighting, signage',
     items:[
-      { key:'ext_front', label:'Front Entrance & Facade', hint:'Graffiti, litter, vandalism, cracks, window condition' },
       { key:'ext_rear', label:'Rear / Side Exterior', hint:'Graffiti, litter, vandalism, fencing, drainage' },
       { key:'ext_landscape', label:'Landscaping & Grounds', hint:'Lawn, hedges, planters, irrigation, debris, trip hazards' },
       { key:'ext_garbage_enc', label:'Garbage / Recycling Enclosure', hint:'Bins, enclosure condition, odour, overflow, pests' },
@@ -766,7 +757,6 @@ const BUILDINGS = {
       { key:'lobby_blue_box', label:'Blue Box', hint:'Condition, contents, cleanliness' },
       { key:'lobby_signage', label:'Entrance & Building Signage', hint:'Address visible, building name, branding, notice boards' },
       { key:'lobby_lighting', label:'Lobby Lighting', hint:'Burnt out bulbs, flickering, emergency lights' },
-      { key:'lobby_fire_panel', label:'Fire Panel', hint:'Panel status, indicator lights, signage, access' },
     ]},
   { id:'amenity', name:'Amenity Room', theme:'amenity', sub:'Walls, ceilings, lighting, furniture, cleanliness, appliances',
     items:[
@@ -792,7 +782,6 @@ const BUILDINGS = {
   { id:'doors', name:'Doors & Entry Points', theme:'doors', sub:'Locks, fob readers, door closer, glass, weatherstripping',
     items:[
       { key:'door_main', label:'Main Entrance Door', hint:'Lock, fob reader, closer, glass, weatherstripping' },
-      { key:'door_stairway', label:'Stairway Fire Doors', hint:'Self-closing, latching, seals, fire door signage present' },
       { key:'door_electrical', label:'Electrical Closets', hint:'Locks, closer, condition, signage' },
       { key:'door_amenity', label:'Amenity Room Door', hint:'Lock, fob reader, closer, condition' },
     ]},
@@ -812,7 +801,6 @@ const BUILDINGS = {
     ]},
   { id:'exterior', name:'Building Exterior & Grounds', theme:'exterior', sub:'Grounds, cleanliness, litter, graffiti, facades',
     items:[
-      { key:'ext_front', label:'Front Entrance & Facade', hint:'Graffiti, litter, vandalism, cracks, window condition' },
       { key:'ext_rear', label:'Side & Rear Exterior', hint:'Graffiti, litter, vandalism, fencing, drainage' },
       { key:'ext_landscape', label:'Landscaping & Grounds', hint:'Lawn, hedges, planters, irrigation, debris, trip hazards' },
       { key:'ext_dog', label:'Dog Stations', hint:'Bag supply, bin condition, cleanliness, signage' },
@@ -825,7 +813,7 @@ const BUILDINGS = {
       { key:'maint_elec', label:'Electrical Room', hint:'Panel access, labelling, cleanliness, obstructions, temperature' },
       { key:'maint_comm', label:'Communication Room', hint:'Cleanliness, ventilation, obstructions, equipment status' },
       { key:'maint_water', label:'Water Entry Room', hint:'Valves, leaks, cleanliness, access, labelling' },
-      { key:'maint_sprinkler', label:'Sprinkler / Fire Pump Room', hint:'Panel status, pump condition, gauges, signage, access' },
+      { key:'maint_sprinkler', label:'Sprinkler / Fire Pump Room', hint:'Pump condition, gauges, signage, access' },
       { key:'maint_service', label:'Service Room', hint:'Cleanliness, equipment, obstructions, ventilation' },
       { key:'maint_boiler', label:'Boilers / Hot Water Tanks', hint:'Temperature, leaks, pressure gauges, unusual noise' },
       { key:'maint_garbage', label:'Garbage Room', hint:'Cleanliness, bins, odour, overflow, pest signs, chute' },
@@ -861,7 +849,6 @@ const BUILDINGS = {
       { key:'lobby_blue_box', label:'Blue Box', hint:'Condition, contents, cleanliness' },
       { key:'lobby_signage', label:'Entrance & Building Signage', hint:'Address visible, building name, branding, notice boards' },
       { key:'lobby_lighting', label:'Lobby Lighting', hint:'Burnt out bulbs, flickering, emergency lights' },
-      { key:'lobby_fire_panel', label:'Fire Panel', hint:'Panel status, indicator lights, signage, access' },
     ]},
   { id:'amenity', name:'Amenity Room', theme:'amenity', sub:'Walls, ceilings, lighting, furniture, cleanliness, appliances',
     items:[
@@ -884,7 +871,6 @@ const BUILDINGS = {
   { id:'doors', name:'Doors & Entry Points', theme:'doors', sub:'Locks, fob readers, door closer, glass, weatherstripping',
     items:[
       { key:'door_main', label:'Main Entrance Door', hint:'Lock, fob reader, closer, glass, weatherstripping' },
-      { key:'door_stairway', label:'Stairway Fire Doors', hint:'Self-closing, latching, seals, fire door signage present' },
       { key:'door_electrical', label:'Electrical Closets', hint:'Locks, closer, condition, signage' },
       { key:'door_amenity', label:'Amenity Room Door', hint:'Lock, fob reader, closer, condition' },
     ]},
@@ -903,7 +889,6 @@ const BUILDINGS = {
     ]},
   { id:'exterior', name:'Building Exterior & Grounds', theme:'exterior', sub:'Grounds, cleanliness, litter, graffiti, facades',
     items:[
-      { key:'ext_front', label:'Front Entrance & Facade', hint:'Graffiti, litter, vandalism, cracks, window condition' },
       { key:'ext_rear', label:'Side & Rear Exterior', hint:'Graffiti, litter, vandalism, fencing, drainage' },
       { key:'ext_landscape', label:'Landscaping & Grounds', hint:'Lawn, hedges, planters, irrigation, debris, trip hazards' },
       { key:'ext_dog', label:'Dog Stations', hint:'Bag supply, bin condition, cleanliness, signage' },
@@ -957,9 +942,17 @@ function getSaveKey() { return SAVE_KEY_PREFIX + state.buildingKey; }
 function getPhotoKey() { return 'walk_' + state.buildingKey; }
 
 // ── SESSION LOCK ──
-// Prevents two tabs from overwriting each other's saves
+// Prevents two SIMULTANEOUSLY-OPEN tabs from overwriting each other's saves.
+// The lock is a heartbeat: { id, ts }. A live session refreshes ts on every
+// save and on a 3s timer. A lock whose ts is older than LOCK_STALE_MS belongs
+// to a session that crashed, was closed, or reloaded — so any session may
+// reclaim it. This is the critical fix for the "all my comments disappeared"
+// bug: previously a reload generated a new SESSION_ID while the stale lock kept
+// the old id, so checkSessionLock() returned false forever and every autosave
+// silently no-op'd. Now a reloaded session simply reclaims its own stale lock.
 const SESSION_LOCK_PREFIX = 'catalyst_session_';
 const SESSION_ID = Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+const LOCK_STALE_MS = 15000;   // lock older than this = dead/reloaded session
 let sessionConflictShown = false;
 
 function onVisibilityChange() {
@@ -968,31 +961,49 @@ function onVisibilityChange() {
   }
 }
 
-function acquireSessionLock() {
+function readSessionLock() {
   try {
-    localStorage.setItem(SESSION_LOCK_PREFIX + state.buildingKey, SESSION_ID);
+    const raw = localStorage.getItem(SESSION_LOCK_PREFIX + state.buildingKey);
+    if (!raw) return null;
+    // Back-compat: older builds stored a bare id string (no timestamp).
+    if (raw.charAt(0) === '{') return JSON.parse(raw);
+    return { id: raw, ts: 0 };
+  } catch(e) { return null; }
+}
+
+function writeSessionLock() {
+  try {
+    localStorage.setItem(SESSION_LOCK_PREFIX + state.buildingKey,
+      JSON.stringify({ id: SESSION_ID, ts: Date.now() }));
   } catch(e) {}
+}
+
+function acquireSessionLock() {
+  // Starting/resuming a walk: claim ownership for this session unconditionally.
+  writeSessionLock();
 }
 
 function checkSessionLock() {
   try {
-    const currentLock = localStorage.getItem(SESSION_LOCK_PREFIX + state.buildingKey);
-    if (currentLock && currentLock !== SESSION_ID) {
-      // Another tab has taken over
-      if (!sessionConflictShown) {
-        sessionConflictShown = true;
-        alert('⚠️ This app is open for ' + BUILDING.name + ' in another tab or window.\n\nTo avoid losing data, please use only one tab at a time. Save your work and close any other tabs that have the app open before continuing.\n\nBest practice: Always use the same tab, and tap "Save" before closing.');
-      }
-      return false;
+    const lock = readSessionLock();
+    // No lock, or it's ours → we own it. Refresh the heartbeat and continue.
+    if (!lock || lock.id === SESSION_ID) { writeSessionLock(); return true; }
+    // Someone else's id holds it, but it's stale → previous session is gone
+    // (crash/close/reload). Reclaim it so saving works again.
+    if (Date.now() - (lock.ts || 0) > LOCK_STALE_MS) { writeSessionLock(); return true; }
+    // A different tab is actively holding the lock right now (fresh heartbeat).
+    if (!sessionConflictShown) {
+      sessionConflictShown = true;
+      alert('⚠️ This app is open for ' + (BUILDING ? BUILDING.name : 'this building') + ' in another tab or window.\n\nTo avoid losing data, please use only one tab at a time. Save your work and close any other tabs that have the app open before continuing.\n\nBest practice: Always use the same tab, and tap "Save" before closing.');
     }
-    return true;
+    return false;
   } catch(e) { return true; }
 }
 
 function releaseSessionLock() {
   try {
-    const currentLock = localStorage.getItem(SESSION_LOCK_PREFIX + state.buildingKey);
-    if (currentLock === SESSION_ID) {
+    const lock = readSessionLock();
+    if (lock && lock.id === SESSION_ID) {
       localStorage.removeItem(SESSION_LOCK_PREFIX + state.buildingKey);
     }
   } catch(e) {}
@@ -1540,13 +1551,17 @@ function addPhoto(key, input) {
   reader.onload = (e) => {
     const img = new Image();
     img.onload = () => {
-      const MAX = 1600;
+      // Cap the stored copy at 1280px / q0.8. The PDF re-encodes down to 1200px
+      // anyway (see downsampleForPdf), so a larger stored copy gained nothing but
+      // memory — and accumulating 50+ full-res copies is what OOM-crashed the app
+      // mid-walk on big Aspen walks. This roughly halves per-photo RAM.
+      const MAX = 1280;
       let w = img.width, h = img.height;
       if (w > MAX || h > MAX) { if (w > h) { h = Math.round(h*MAX/w); w = MAX; } else { w = Math.round(w*MAX/h); h = MAX; } }
       const canvas = document.createElement('canvas');
       canvas.width = w; canvas.height = h;
       canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-      state[key].photos.push({ name:file.name, data:canvas.toDataURL('image/jpeg',0.85), origW:img.width, origH:img.height });
+      state[key].photos.push({ name:file.name, data:canvas.toDataURL('image/jpeg',0.8), origW:img.width, origH:img.height });
       renderPhotos(key);
       persistAfterPhotoChange();
       // Show "take another" prompt for camera captures
@@ -1582,11 +1597,17 @@ function dismissTakeAnother(key) {
 
 function renderPhotos(key) {
   const row = document.getElementById('photos_' + key);
+  if (!row || !state[key]) return;   // defensive: never let a missing node throw
+                                     // and blank the whole walk screen on resume
   const buttons = row.querySelectorAll('label');
   row.innerHTML = '';
   state[key].photos.forEach((p,i) => {
     const t = document.createElement('div'); t.className = 'photo-thumb';
-    t.innerHTML = '<img src="' + p.data + '" alt="photo"><div class="photo-remove" onclick="removePhoto(&#39;' + key + '&#39;,' + i + ')">×</div>';
+    // loading="lazy" + decoding="async": the browser only decodes thumbnails as
+    // they scroll into view instead of decoding every photo at once. On a walk
+    // with 50+ photos that difference is what kept the page from OOM-crashing
+    // (white screen) when reopened.
+    t.innerHTML = '<img src="' + p.data + '" alt="photo" loading="lazy" decoding="async"><div class="photo-remove" onclick="removePhoto(&#39;' + key + '&#39;,' + i + ')">×</div>';
     row.appendChild(t);
   });
   buttons.forEach(b => row.appendChild(b));
