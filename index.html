@@ -310,7 +310,6 @@ const BUILDINGS = {
       { key:'door_rear', label:'Rear / Side Entrance', hint:'Lock, closer, fob reader, condition' },
       { key:'door_parkade_ped', label:'Parkade Pedestrian Door(s)', hint:'Lock, closer, fob access, signage' },
       { key:'door_rooftop', label:'Rooftop / Mechanical Access Door', hint:'Lock, signage, condition' },
-      { key:'door_stairwell', label:'Stairwell Fire Doors', hint:'Self-closing, latching, seals, fire door signage present' },
     ]},
   { id:'parkade', name:'Parkade & Gates', theme:'parkade', sub:'P1 visitor, P2 resident — condition, gates, lighting, signage',
     items:[
@@ -334,7 +333,6 @@ const BUILDINGS = {
     ]},
   { id:'exterior', name:'Building Exterior & Grounds', theme:'exterior', sub:'Facades, grounds, garbage enclosure, lighting, signage',
     items:[
-      { key:'ext_front', label:'Front Entrance & Facade', hint:'Graffiti, litter, vandalism, cracks, window condition' },
       { key:'ext_rear', label:'Rear / Side Exterior', hint:'Graffiti, litter, vandalism, fencing, drainage' },
       { key:'ext_landscape', label:'Landscaping & Grounds', hint:'Lawn, hedges, planters, irrigation, debris, trip hazards' },
       { key:'ext_garbage_enc', label:'Garbage / Recycling Enclosure', hint:'Bins, enclosure condition, odour, overflow, pests' },
@@ -351,7 +349,7 @@ const BUILDINGS = {
     items:[
       { key:'maint_elec', label:'Electrical Room', hint:'Panel access, labelling, cleanliness, obstructions, temperature' },
       { key:'maint_mech', label:'Mechanical Room', hint:'HVAC, pumps, leaks, temperature, unusual noise' },
-      { key:'maint_fire', label:'Sprinkler / Fire Panel Room', hint:'Panel status, sprinkler heads, signage, access' },
+      { key:'maint_fire', label:'Sprinkler / Fire Panel Room', hint:'Sprinkler heads, signage, access' },
       { key:'maint_boiler', label:'Boiler / Hot Water', hint:'Temperature, leaks, pressure gauges, unusual noise' },
       { key:'maint_gen', label:'Generator', hint:'Fuel level, run status, maintenance log, leaks, ventilation' },
       { key:'maint_garbage', label:'Garbage Room', hint:'Cleanliness, bins, odour, overflow, pest signs, chute' },
@@ -405,7 +403,6 @@ const BUILDINGS = {
       { key:'door_rear', label:'Rear / Side Entrance', hint:'Lock, closer, fob reader, condition' },
       { key:'door_parkade_ped', label:'Parkade Pedestrian Door(s)', hint:'Lock, closer, fob access, signage' },
       { key:'door_rooftop', label:'Rooftop / Mechanical Access Door', hint:'Lock, signage, condition' },
-      { key:'door_stairwell', label:'Stairwell Fire Doors', hint:'Self-closing, latching, seals, fire door signage present' },
     ]},
   { id:'parkade', name:'Parkade & Gates', theme:'parkade', sub:'P1 visitor & tenant parking, gates, lighting',
     items:[
@@ -428,7 +425,6 @@ const BUILDINGS = {
     ]},
   { id:'exterior', name:'Building Exterior & Grounds', theme:'exterior', sub:'Facades, grounds, lighting, signage, generator, loading zone',
     items:[
-      { key:'ext_front', label:'Front Entrance & Facade', hint:'Graffiti, litter, vandalism, cracks, window condition' },
       { key:'ext_rear', label:'Rear / Side Exterior', hint:'Graffiti, litter, vandalism, fencing, drainage' },
       { key:'ext_landscape', label:'Landscaping & Grounds', hint:'Lawn, hedges, planters, irrigation, debris, trip hazards' },
 
@@ -510,7 +506,6 @@ const BUILDINGS = {
   { id:'doors', name:'Doors & Entry Points', theme:'doors', sub:'Locks, fob readers, door closer, glass, weatherstripping',
     items:[
       { key:'door_main', label:'Main Entrance Door', hint:'Lock, fob reader, closer, glass, weatherstripping' },
-      { key:'door_stairway', label:'Stairway Fire Doors', hint:'Self-closing, latching, seals, fire door signage present' },
       { key:'door_electrical', label:'Electrical Closets', hint:'Locks, closer, condition, signage' },
       { key:'door_amenity', label:'Amenity Room Door', hint:'Lock, fob reader, closer, condition' },
     ]},
@@ -538,7 +533,6 @@ const BUILDINGS = {
     ]},
   { id:'exterior', name:'Building Exterior & Grounds', theme:'exterior', sub:'Grounds, cleanliness, litter, graffiti, facades',
     items:[
-      { key:'ext_front', label:'Front Entrance & Facade', hint:'Graffiti, litter, vandalism, cracks, window condition' },
       { key:'ext_rear', label:'Side & Rear Exterior', hint:'Graffiti, litter, vandalism, fencing, drainage' },
       { key:'ext_landscape', label:'Landscaping & Grounds', hint:'Lawn, hedges, planters, irrigation, debris, trip hazards' },
       { key:'ext_dog', label:'Dog Stations', hint:'Bag supply, bin condition, cleanliness, signage' },
@@ -700,7 +694,6 @@ const BUILDINGS = {
     items:[
       { key:'door_main', label:'Main Entrance Door', hint:'Lock, fob reader, closer, glass, weatherstripping' },
       { key:'door_rear', label:'Rear / Side Entrance', hint:'Lock, closer, fob reader, condition' },
-      { key:'door_stairwell', label:'Stairwell Fire Doors', hint:'Self-closing, latching, seals, fire door signage present' },
     ]},
   { id:'parkade', name:'Parkade & Gates', theme:'parkade', sub:'Resident parking gate, P1',
     items:[
@@ -714,7 +707,6 @@ const BUILDINGS = {
     ]},
   { id:'exterior', name:'Building Exterior & Grounds', theme:'exterior', sub:'Facades, grounds, lighting, signage',
     items:[
-      { key:'ext_front', label:'Front Entrance & Facade', hint:'Graffiti, litter, vandalism, cracks, window condition' },
       { key:'ext_rear', label:'Rear / Side Exterior', hint:'Graffiti, litter, vandalism, fencing, drainage' },
       { key:'ext_landscape', label:'Landscaping & Grounds', hint:'Lawn, hedges, planters, irrigation, debris, trip hazards' },
       { key:'ext_garbage_enc', label:'Garbage / Recycling Enclosure', hint:'Bins, enclosure condition, odour, overflow, pests' },
@@ -763,7 +755,6 @@ const BUILDINGS = {
       { key:'lobby_blue_box', label:'Blue Box', hint:'Condition, contents, cleanliness' },
       { key:'lobby_signage', label:'Entrance & Building Signage', hint:'Address visible, building name, branding, notice boards' },
       { key:'lobby_lighting', label:'Lobby Lighting', hint:'Burnt out bulbs, flickering, emergency lights' },
-      { key:'lobby_fire_panel', label:'Fire Panel', hint:'Panel status, indicator lights, signage, access' },
     ]},
   { id:'amenity', name:'Amenity Room', theme:'amenity', sub:'Walls, ceilings, lighting, furniture, cleanliness, appliances',
     items:[
@@ -789,7 +780,6 @@ const BUILDINGS = {
   { id:'doors', name:'Doors & Entry Points', theme:'doors', sub:'Locks, fob readers, door closer, glass, weatherstripping',
     items:[
       { key:'door_main', label:'Main Entrance Door', hint:'Lock, fob reader, closer, glass, weatherstripping' },
-      { key:'door_stairway', label:'Stairway Fire Doors', hint:'Self-closing, latching, seals, fire door signage present' },
       { key:'door_electrical', label:'Electrical Closets', hint:'Locks, closer, condition, signage' },
       { key:'door_amenity', label:'Amenity Room Door', hint:'Lock, fob reader, closer, condition' },
     ]},
@@ -809,7 +799,6 @@ const BUILDINGS = {
     ]},
   { id:'exterior', name:'Building Exterior & Grounds', theme:'exterior', sub:'Grounds, cleanliness, litter, graffiti, facades',
     items:[
-      { key:'ext_front', label:'Front Entrance & Facade', hint:'Graffiti, litter, vandalism, cracks, window condition' },
       { key:'ext_rear', label:'Side & Rear Exterior', hint:'Graffiti, litter, vandalism, fencing, drainage' },
       { key:'ext_landscape', label:'Landscaping & Grounds', hint:'Lawn, hedges, planters, irrigation, debris, trip hazards' },
       { key:'ext_dog', label:'Dog Stations', hint:'Bag supply, bin condition, cleanliness, signage' },
@@ -822,7 +811,7 @@ const BUILDINGS = {
       { key:'maint_elec', label:'Electrical Room', hint:'Panel access, labelling, cleanliness, obstructions, temperature' },
       { key:'maint_comm', label:'Communication Room', hint:'Cleanliness, ventilation, obstructions, equipment status' },
       { key:'maint_water', label:'Water Entry Room', hint:'Valves, leaks, cleanliness, access, labelling' },
-      { key:'maint_sprinkler', label:'Sprinkler / Fire Pump Room', hint:'Panel status, pump condition, gauges, signage, access' },
+      { key:'maint_sprinkler', label:'Sprinkler / Fire Pump Room', hint:'Pump condition, gauges, signage, access' },
       { key:'maint_service', label:'Service Room', hint:'Cleanliness, equipment, obstructions, ventilation' },
       { key:'maint_boiler', label:'Boilers / Hot Water Tanks', hint:'Temperature, leaks, pressure gauges, unusual noise' },
       { key:'maint_garbage', label:'Garbage Room', hint:'Cleanliness, bins, odour, overflow, pest signs, chute' },
@@ -858,7 +847,6 @@ const BUILDINGS = {
       { key:'lobby_blue_box', label:'Blue Box', hint:'Condition, contents, cleanliness' },
       { key:'lobby_signage', label:'Entrance & Building Signage', hint:'Address visible, building name, branding, notice boards' },
       { key:'lobby_lighting', label:'Lobby Lighting', hint:'Burnt out bulbs, flickering, emergency lights' },
-      { key:'lobby_fire_panel', label:'Fire Panel', hint:'Panel status, indicator lights, signage, access' },
     ]},
   { id:'amenity', name:'Amenity Room', theme:'amenity', sub:'Walls, ceilings, lighting, furniture, cleanliness, appliances',
     items:[
@@ -881,7 +869,6 @@ const BUILDINGS = {
   { id:'doors', name:'Doors & Entry Points', theme:'doors', sub:'Locks, fob readers, door closer, glass, weatherstripping',
     items:[
       { key:'door_main', label:'Main Entrance Door', hint:'Lock, fob reader, closer, glass, weatherstripping' },
-      { key:'door_stairway', label:'Stairway Fire Doors', hint:'Self-closing, latching, seals, fire door signage present' },
       { key:'door_electrical', label:'Electrical Closets', hint:'Locks, closer, condition, signage' },
       { key:'door_amenity', label:'Amenity Room Door', hint:'Lock, fob reader, closer, condition' },
     ]},
@@ -900,7 +887,6 @@ const BUILDINGS = {
     ]},
   { id:'exterior', name:'Building Exterior & Grounds', theme:'exterior', sub:'Grounds, cleanliness, litter, graffiti, facades',
     items:[
-      { key:'ext_front', label:'Front Entrance & Facade', hint:'Graffiti, litter, vandalism, cracks, window condition' },
       { key:'ext_rear', label:'Side & Rear Exterior', hint:'Graffiti, litter, vandalism, fencing, drainage' },
       { key:'ext_landscape', label:'Landscaping & Grounds', hint:'Lawn, hedges, planters, irrigation, debris, trip hazards' },
       { key:'ext_dog', label:'Dog Stations', hint:'Bag supply, bin condition, cleanliness, signage' },
